@@ -6,6 +6,8 @@
 
 This Repo contains everything you need to build an ark for Beatles Rock Band Deluxe for PS3 or Xbox 360.
 
+### **NOTE: TBRBDX is in a very early stage. This guide is heavily outdated and does not include guides for our new actions.**
+
 ## Features
 
 ### Quality of Life
@@ -16,7 +18,7 @@ This Repo contains everything you need to build an ark for Beatles Rock Band Del
 * Bass streak effect from RB3/RB4 available on all instruments
 * Selectable song speed and track speed by 5% increments
 * Selectable venue framerate up to 60fps
-* Manual calibration adjusts by 1ms instad of 5ms
+* Manual calibration adjusts by 1ms instead of 5ms
 
 ### Additional Modifications
 * Hue-shifting menu
