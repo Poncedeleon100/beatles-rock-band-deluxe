@@ -59,6 +59,56 @@
 ;song title always on
 {set $songtitle FALSE}
 
-{platform_mgr set_notify_ui_location kOSNotifyBottomCenter}
-{set $saveload_skip_upload FALSE}
+;do gem custom textures
+{set $gemcustomtexture FALSE}
+
+;gem texture
+{set $gem "none"}
+
+;do smasher custom textures
+{set $smashercustomtexture FALSE}
+
+;smasher texture
+{set $smasher "none"}
+
+;do streak custom texture
+{set $streakcustomtexture FALSE}
+
+;streak texture
+{set $streak "none"}
+
+;do overdrive custom textures
+{set $spotlightcustomtexture FALSE}
+
+;overdrive texture
+{set $spotlight "none"}
+
+;do multiplier ring custom textures
+{set $multiringcustomtexture FALSE}
+
+;multiplier ring texture
+{set $multiring "none"}
+
+;do overdrive bar custom textures
+{set $odbarcustomtexture FALSE}
+
+;overdrive bar texture
+{set $odbar "none"}
+
+;do score custom textures
+{set $scorecustomtexture FALSE}
+
+;score texture
+{set $scoretex "none"}
+
+;custom track scaling/angles/rotation
+;highly experimental, don't edit unless you know what you're doing
+{set $trackangle FALSE}
+;the default angles set here is rb2's
+{set $track_pitch -44.5} ;camera pitch
+{set $track_fov 21.0515995025635} ;field of view of the track camera
+{set $track_y_pos -83.5} ;y position of the camera (in/out)
+{set $track_z_pos 18.5} ;z position of the camera (up/down)
+{set $track_fade_start 60} ;start point of the fadeout at the end of the track
+{set $track_fade_length 40} ;length of the fadeout at the end of the track
 #endif
