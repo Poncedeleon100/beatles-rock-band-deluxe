@@ -8,6 +8,7 @@
    "VENUE FPS: %dFPS")
 (os_blnk " ")
 (os_dxsettings "DELUXE SETTINGS")
+(os_write "[SAVE SETTINGS]")
 (os_spd "Set Speeds")
 (os_mod "Modifiers")
 (os_trk "Track Options")
