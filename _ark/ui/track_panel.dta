@@ -233,11 +233,6 @@
       {{$this find spotlight_drums_track.tex} set_bitmap {sprint "ui/track/spotlight/" $spotlight ".png"}}
    }
    
-;after all of the queued texture updates are completed, set them to false so they do not run again until a new texture is queued via overshell
-{set $highwaycustomtexture FALSE}
-{set $streakcustomtexture FALSE}
-{set $spotlightcustomtexture FALSE}
-   
       {$this play_intro}
       {if
          {&&
