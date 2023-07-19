@@ -11,7 +11,7 @@
 (os_write "[SAVE SETTINGS]")
 (os_spd "Set Speeds")
 (os_mod "Modifiers")
-(os_trk "Track Options")
+(os_trk "Appearance")
 (os_gems "Gems")
 (os_smashers "Smashers")
 (os_hw "Highway")
