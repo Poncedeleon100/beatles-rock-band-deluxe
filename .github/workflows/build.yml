@@ -30,7 +30,7 @@ jobs:
           find . -name "*.*_ps3" -type f -delete
       - name: Build ARK
         run: |
-          dependencies/linux/arkhelper dir2ark ./_ark ./_build/Xbox/gen -n "patch_xbox" -e -v 5
+          dependencies/linux/arkhelper dir2ark ./_ark ./_build/xbox/gen -n "patch_xbox" -e -v 5
       - name: Remove Excess files
         run: |
           find . -name "*.txt" -type f -delete
