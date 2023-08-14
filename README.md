@@ -80,10 +80,6 @@ This guide contains full instructions on how to install The Beatles: Rock Band D
 
 *Sidenote: it is normal for The Beatles: Rock Band to take longer to start up on PS3 and isn't really something we can fix.*
 
-![Custom Configuration](dependencies/images/customconfig.png)
-![GPU Tab](dependencies/images/gputab.png)
-![Write Color Buffers](dependencies/images/writecolorbuffers.png)
-
 ## Installing on PS3
 
 **NOTE: You WILL need a HACKED/MODDED (CFW or HFW/HEN) PS3 in order to play this mod on console. We hope this is clear.**
