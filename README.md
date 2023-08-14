@@ -80,8 +80,6 @@ This guide contains full instructions on how to install The Beatles: Rock Band D
 
 *Sidenote: it is normal for The Beatles: Rock Band to take longer to start up on PS3 and isn't really something we can fix.*
 
-***Sidenote:*** *we recommend* ***enabling `Write Color Buffers`*** *for The Beatles: Rock Band to prevent any character model issues.*
-
 ![Custom Configuration](dependencies/images/customconfig.png)
 ![GPU Tab](dependencies/images/gputab.png)
 ![Write Color Buffers](dependencies/images/writecolorbuffers.png)
