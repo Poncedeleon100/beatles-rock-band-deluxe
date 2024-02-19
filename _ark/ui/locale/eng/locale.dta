@@ -61,10 +61,6 @@
 (hw_black "Black")
 (hw_green "Original")
 (hw_none "Transparent")
-(nice_solo
-   "Nice")
-(choke_solo
-   "Fab Choke!")
 (1_star
    "*")
 (2_star

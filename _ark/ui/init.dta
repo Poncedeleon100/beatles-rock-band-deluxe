@@ -38,79 +38,16 @@
 #include matchmaking/invite_friends.dta
 #include net_delegator.dta
 #include store/store.dta
-#include overshell.dta
+;#include overshell.dta
 #ifndef _SHIP
 #include selvenue.dta
 #include framerate/frame_rate.dta
 #endif
-
-;sets default track speed. 1.15 is 115%, 1.30 is 130% and so on.
-{set $trackspeed 1.0}
-
-;sets default song speed 1.15 is 115%, 1.30 is 130% and so on.
-{set $speedmod 1.0}
-
 ;set default venue fps.
 {set $emulatefps 30}
 
-;no venues
-{set $blackbg FALSE}
-
 ;song title always on
 {set $songtitle FALSE}
-
-;do gem custom textures
-{set $gemcustomtexture FALSE}
-
-;gem texture
-{set $gem "none"}
-
-;do smasher custom textures
-{set $smashercustomtexture FALSE}
-
-;smasher texture
-{set $smasher "none"}
-
-;do streak custom texture
-{set $streakcustomtexture FALSE}
-
-;streak texture
-{set $streak "none"}
-
-;do overdrive custom textures
-{set $spotlightcustomtexture FALSE}
-
-;overdrive texture
-{set $spotlight "none"}
-
-;do multiplier ring custom textures
-{set $multiringcustomtexture FALSE}
-
-;multiplier ring texture
-{set $multiring "none"}
-
-;do overdrive bar custom textures
-{set $odbarcustomtexture FALSE}
-
-;overdrive bar texture
-{set $odbar "none"}
-
-;do score custom textures
-{set $scorecustomtexture FALSE}
-
-;score texture
-{set $scoretex "none"}
-
-;custom track scaling/angles/rotation
-;highly experimental, don't edit unless you know what you're doing
-{set $trackangle FALSE}
-;the default angles set here is rb2's
-{set $track_pitch -44.5} ;camera pitch
-{set $track_fov 21.0515995025635} ;field of view of the track camera
-{set $track_y_pos -83.5} ;y position of the camera (in/out)
-{set $track_z_pos 18.5} ;z position of the camera (up/down)
-{set $track_fade_start 60} ;start point of the fadeout at the end of the track
-{set $track_fade_length 40} ;length of the fadeout at the end of the track
 #endif
 
 ;DEVELOPER SETTINGS BELOW, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING!!
@@ -167,13 +104,3 @@
 )
 ;{unless {file_exists dx.dta} INIT_DTA_WRITER}
 {if {file_exists #ifdef HX_XBOX "GAME:/dx_tb.dta" #endif #ifdef HX_PS3 "GD:/dev_hdd0/game/BLUS30282/USRDIR/dx_tb.dta" #endif} INIT_DTA_READER}
-
-;modifier funcs
-{if $postfx
-   {rnd toggle_all_postprocs}}
-
-{unless {== $highway none} {set $highwaycustomtexture TRUE}}
-
-{unless {== $spotlight none} {set $spotlightcustomtexture TRUE}}
-
-{unless {== $streak none} {set $streakcustomtexture TRUE}}

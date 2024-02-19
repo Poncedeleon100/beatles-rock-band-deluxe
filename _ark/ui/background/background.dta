@@ -116,7 +116,7 @@
                {if {> $hueshift 180} ;check if we are above the allowed threshold
                   {set $hueshift -180} ;setting it to the inverse allows it to seamlessly loop
                }
-               {if {< $hueshift -180} ;check if we are above the allowed threshold
+               {if {< $hueshift -180} ;check if we are below the allowed threshold
                   {set $hueshift 180} ;setting it to the inverse allows it to seamlessly loop
                }
                {background_panel apply_hue_shift} ;run the hue shift in it's own block above
@@ -156,7 +156,7 @@
       }
       {$this random_cutout} ;initiate picking a cutout
       
-      {beatles_logo.tex set_bitmap "ui/background/beatles_dx.png"} ;set the logo
+      ;{beatles_logo.tex set_bitmap "ui/background/beatles_dx.png"} ;set the logo
       
       ;this was trying to replicate a mesh as a new mesh. didnt work.
       ;{beatles_logo.mesh set_name beatles_logo2.mesh main_1}

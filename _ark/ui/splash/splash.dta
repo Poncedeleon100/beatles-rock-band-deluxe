@@ -10,7 +10,7 @@
       {ui goto_screen splash_screen})
    (enter
       {platform_mgr disable_xmp}
-      {ui goto_screen splash_screen}
+      ;{ui goto_screen splash_screen}
       kDataUnhandled)
    (exit
       #ifdef HX_PS3
@@ -52,9 +52,9 @@
       ;{$this iterate Light $l {$l set color {pack_color 1 0 0}}} ;actually applying the hue shift after we run the math in the below script task
       {watercolor.mesh set_showing FALSE}
       {watercolor01.mesh set_showing FALSE}
-      {$this iterate UILabel $l {$l set_showing FALSE}}
-      {logo_beatles.tex set_bitmap "ui/background/beatles_dx_big.png"}
-      {logo_beatles.mesh set_local_pos_index 2 -20}
+      ;{$this iterate UILabel $l {$l set_showing FALSE}} ;removes text from splash screen
+      ;{logo_beatles.tex set_bitmap "ui/background/beatles_dx_big.png"}
+      ;{logo_beatles.mesh set_local_pos_index 2 -20}
       #ifdef HX_PS3
       {register_trophy}
       #endif
