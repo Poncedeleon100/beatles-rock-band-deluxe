@@ -13,19 +13,19 @@
       {main_ringo.tex set_bitmap "ui/background/main_john_help.png"}
       ;main_paul_george 1-2
       {paul_george.mesh set_local_pos_index 0 -2.5} ;X
-      {paul_george.mesh set_local_pos_index 2 -1} ;Y
+      {paul_george.mesh set_local_pos_index 2 -1.5} ;Y
       
       {paul_george.mesh set_local_scale_index 0 .09} ;X
       {paul_george.mesh set_local_scale_index 1 .09} ;Y
       ;main_ringo 3
       {main_ringo.mesh set_local_pos_index 0 2.7} ;X
-      {main_ringo.mesh set_local_pos_index 2 -.9} ;Y
+      {main_ringo.mesh set_local_pos_index 2 -1.4} ;Y
       
       {main_ringo.mesh set_local_scale_index 0 .05} ;X
       {main_ringo.mesh set_local_scale_index 1 .1} ;Y
       ;main_john 4
       {main_john.mesh set_local_pos_index 0 5.45} ;X
-      {main_john.mesh set_local_pos_index 2 -1.1} ;Y
+      {main_john.mesh set_local_pos_index 2 -1.6} ;Y
       {main_john.mesh set_local_scale_index 0 .043} ;X
       {main_john.mesh set_local_scale_index 1 .043} ;Y
       
@@ -126,19 +126,21 @@
       }
    )
    (random_cutout
-      {set $cutout_to_use {random_int 0 3}} ;randomly detirmine which cutout to use
+      {set $cutout_to_use {random_int 0 3}} ;randomly determine which cutout to use
       {if_else {== $cutout_to_use $lastusedcutout} ;if the new cutout matches the last cutout we used
          {$this random_cutout} ;loop random again to try for a new cutout
          {$this apply_cutout} ;once we have a new cutout, load it
       }
    )
    (apply_cutout
-      {switch $cutout_to_use ;check which cutout we want to use
-         (0 {$this sil_abbey} {set $lastusedcutout 0}) ;use it, and track it as the last used cutout
-         (1 {$this sil_help} {set $lastusedcutout 1})
-         (2 {$this sil_vanilla} {set $lastusedcutout 2})
-         kDataUnhandled ;failsafe in case we get an invalid number
-      }
+      ;{switch $cutout_to_use ;check which cutout we want to use
+      ;   (0 {$this sil_abbey} {set $lastusedcutout 0}) ;use it, and track it as the last used cutout
+      ;   (1 {$this sil_help} {set $lastusedcutout 1})
+      ;   (2 {$this sil_vanilla} {set $lastusedcutout 2})
+      ;   kDataUnhandled ;failsafe in case we get an invalid number
+      ;}
+      {$this sil_help}
+
    )
    (enter
       {watercolor.mesh set_showing FALSE}
