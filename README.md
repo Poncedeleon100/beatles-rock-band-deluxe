@@ -1,3 +1,6 @@
+This is the original TBRBDX branch, with no changes made to it. Included are the final builds for both PS3 and XBOX. Below is the readme before the project was archived.
+
+
 # The Beatles: Rock Band Deluxe
 
 ![Header Image](dependencies/art/beatles_dx_big.png)
