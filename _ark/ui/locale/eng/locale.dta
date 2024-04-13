@@ -1,15 +1,16 @@
 ;Modded locale
 (milosliderlbl
-   "Framerate")
+   "Venue Framerate")
 (fps_msg
-   "VENUE FPS: %dFPS")
+   "Venue FPS: %dFPS")
 (os_blnk " ")
-(os_dxsettings "MOD SETTINGS")
-(os_write "[SAVE SETTINGS]")
-(os_spd "Set Framerate")
-(os_car "Set Career Mode")
-(os_career_0 "Main Career Part 1")
-(os_career_1 "Main Career Part 2")
+(os_dxsettings "Mod Settings")
+(os_write "[Save Settings]")
+(os_spd "Venue Framerate")
+(os_car "Career Mode")
+(os_career_0 "Vanilla Career")
+(os_career_1 "Main Career Part 1")
+(os_career_2 "Main Career Part 2")
 ;End of modded locale
 (1_star
    "*")

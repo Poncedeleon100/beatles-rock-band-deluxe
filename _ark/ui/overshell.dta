@@ -45,7 +45,7 @@
     overshell_career_panel
     OVERSHELL_LIST_FILE
     (enter
-        {sel_section.lst set_data (os_career_0 os_career_1 os_blnk os_blnk os_blnk)}
+        {sel_section.lst set_data (os_career_0 os_career_1 os_career_2 os_blnk os_blnk)}
         {title.lbl set text_token {localize os_car}})
     (exit)
     (SELECT_MSG
