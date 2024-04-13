@@ -38,66 +38,29 @@
 #include matchmaking/invite_friends.dta
 #include net_delegator.dta
 #include store/store.dta
-;#include overshell.dta
+#include overshell.dta
 #ifndef _SHIP
 #include selvenue.dta
 #include framerate/frame_rate.dta
 #endif
-;set default venue fps.
+
+;Set default FPS
 {set $emulatefps 30}
 
-;song title always on
-{set $songtitle FALSE}
-#endif
-
-;DEVELOPER SETTINGS BELOW, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING!!
+;Set career mode track
+{set $careertrack os_career_0}
 
 #define INIT_DTA_READER
 (
    {foreach $entry {read_file #ifdef HX_XBOX "GAME:/dx_tb.dta" #endif #ifdef HX_PS3 "GD:/dev_hdd0/game/BLUS30282/USRDIR/dx_tb.dta" #endif}
-      {if {== {elem $entry 0} {basename disable_post_fx}}
-         {set $postfx
-            {elem {find $entry disable_post_fx} 1}
-         }
-      }
-      {if {== {elem $entry 0} {basename track_speed}}
-         {set $trackspeed
-            {elem {find $entry track_speed} 1}
-         }
-      }
-      {if {== {elem $entry 0} {basename song_speed}}
-         {set $speedmod
-            {elem {find $entry song_speed} 1}
-         }
-      }
       {if {== {elem $entry 0} {basename emulate_fps}}
          {set $emulatefps
             {elem {find $entry emulate_fps} 1}
          }
       }
-      {if {== {elem $entry 0} {basename black_bg}}
-         {set $blackbg
-            {elem {find $entry black_bg} 1}
-         }
-      }
-      {if {== {elem $entry 0} {basename song_title_always}}
-         {set $songtitle
-            {elem {find $entry song_title_always} 1}
-         }
-      }
-      {if {== {elem $entry 0} {basename highway_texture}}
-         {set $highway
-            {elem {find $entry highway_texture} 1}
-         }
-      }
-      {if {== {elem $entry 0} {basename streak_texture}}
-         {set $streak
-            {elem {find $entry streak_texture} 1}
-         }
-      }
-      {if {== {elem $entry 0} {basename spotlight_texture}}
-         {set $spotlight
-            {elem {find $entry spotlight_texture} 1}
+      {if {== {elem $entry 0} {basename career_mode_track}}
+         {set $careertrack
+            {elem {find $entry career_mode_track} 1}
          }
       }
    }

@@ -1,0 +1,198 @@
+#define OVERSHELL_LIST_FILE
+((file practice/practice_sel_section.milo)
+ (focus sel_section.lst))
+{new
+   MultiSelectListPanel
+   overshell_main_panel
+   OVERSHELL_LIST_FILE
+   (enter
+      {sel_section.lst set_data (os_write os_car os_spd os_blnk os_blnk)}
+      {title.lbl set text_token os_dxsettings}
+      {$this pause_if_local})
+   (exit)
+   (SELECT_MSG
+      {switch {$component selected_sym}
+         (os_write
+            {do INIT_DTA_WRITER}
+         )
+	      (os_car
+            {ui push_screen overshell_career_screen}
+         )
+         (os_spd
+            {ui push_screen options_milo_screen}
+         )
+      }
+   )
+   (SCROLL_MSG)
+   (BUTTON_DOWN_MSG
+      {if {== $action kAction_Cancel}
+         {if_else {exists $modifier_exit}
+            {ui goto_screen $modifier_exit}
+            {ui goto_screen splash_screen}
+         }
+         {ui pop_screen}
+         {set $modifierpos 0}
+      }
+      kDataUnhandled
+      )}
+{new
+   UIScreen
+   overshell_main_screen
+   (panels overshell_main_panel)
+   (focus overshell_main_panel)}
+{new
+    MultiSelectListPanel
+    overshell_career_panel
+    OVERSHELL_LIST_FILE
+    (enter
+        {sel_section.lst set_data (os_career_0 os_career_1 os_blnk os_blnk os_blnk)}
+        {title.lbl set text_token {localize os_car}})
+    (exit)
+    (SELECT_MSG
+      {set $careertrack {$component selected_sym}}
+      {ui goto_screen overshell_main_screen}
+      {ui pop_screen}
+    )
+    (update_helpbar
+            {helpbar
+                set_config
+                ((cancel helpbar_back)
+                    (confirm helpbar_select))})
+    (SCROLL_MSG)
+    (BUTTON_DOWN_MSG
+        {if
+        {== $action kAction_Cancel}
+         {ui goto_screen overshell_main_screen}
+         {ui pop_screen}}
+         kDataUnhandled)
+    (TRANSITION_COMPLETE_MSG
+        {$this update_helpbar})}
+{new
+   UIScreen
+   overshell_career_screen
+   (panels overshell_career_panel)
+   (focus overshell_career_panel)}
+{new
+   UIPanel
+   options_milo_panel
+   (file
+      "options/options_audio.milo")
+   (focus background_music.btn)
+   (load
+      {content_mgr start_refresh}
+      {content_loading_panel allowed_to_show TRUE})
+   (finish_load
+      {content_loading_panel allowed_to_show FALSE})
+   (is_loaded
+      {content_mgr refresh_done})
+   (enter
+      {background.sld set_num_steps 60} ;number of steps for venue fps slider
+      {background.sld set_current {int {- $emulatefps 1}}} ;set FPS slider based on current value
+	   {background_music.btn set text_token {sprintf {localize fps_msg} {int $emulatefps}}}  ;set venue fps msg
+      {audio_options.lbl set text_token milosliderlbl}
+      {crowd.sld set_showing FALSE}
+      {$this disable crowd.sld}
+      {crowd.btn set_showing FALSE}
+      {$this disable crowd.btn}
+      {sfx.sld set_showing FALSE}
+      {$this disable sfx.sld}
+      {sfx.btn set_showing FALSE}
+      {$this disable sfx.btn}
+      {karaoke.btn set_showing FALSE}
+      {$this disable karaoke.btn}
+	  {$this update_all_from_profile}
+      {memcardmgr
+         add_sink
+         $this
+         (save_load_all_complete_msg)})
+   (exit
+      {memcardmgr remove_sink $this save_load_all_complete_msg})
+   (save_load_all_complete_msg
+      {$this update_all_from_profile})
+   (TRANSITION_COMPLETE_MSG
+      {$this
+         update_helpbar
+         {$this focus_name}}
+      kDataUnhandled)
+   (FOCUS_MSG
+      {$this update_helpbar $new_focus})
+   (SCROLL_SELECT_MSG
+      {$this on_slider_change $component})
+   (SCROLL_MSG
+      {$this on_slider_change $component})
+   (SELECT_MSG
+      {switch
+         $component
+         (background_music.btn
+            {background.sld store}
+            {$this set_focus background.sld})})
+   (BUTTON_DOWN_MSG
+      {switch
+         {$this focus_name}
+         (background.sld
+            {switch
+               $action
+               (kAction_Confirm
+                  {background.sld confirm}
+                  {play_instr_sfx $user button_select}
+                  {$this set_focus background_music.btn})
+               (kAction_Cancel
+                  {background.sld undo $user}
+                  {$this set_focus background_music.btn})
+               kDataUnhandled})
+         {if_else {== $action kAction_Cancel}
+			{ui pop_screen}
+			kDataUnhandled}})
+   (on_slider_change
+      ($component)
+      {switch
+         $component
+         (background.sld
+            {do {set $component current}}
+            {$this set_speeds})})
+   (update_all_from_profile
+      {$this
+         iterate
+         UISlider
+         $s
+         {$this update_from_profile $s}})
+   (update_from_profile
+      ($component)
+      {switch
+         $component
+         (background.sld
+            {$component
+               set_current
+               {int {- $emulatefps 1}}})})
+	(set_speeds
+         {do
+            {set $emulatefps
+               {+ 1 {background.sld current}}}
+         {set $leaderspeed $speedmod}}
+         {set $leaderspeed $speedmod}
+         {$this display_fps_msg $emulatefps})
+   (display_fps_msg
+      ($fps)
+     {background_music.btn set text_token {sprintf {localize fps_msg} {int $fps}}}) ;don't add 1 here because this is being fed the actual fps
+   (update_helpbar
+      ($new_focus)
+      {switch
+         $new_focus
+         ((background_music.btn crowd.btn sfx.btn voicechat.btn)
+            {helpbar
+               set_config
+               ((cancel helpbar_back)
+                  (confirm helpbar_changesetting))})
+         ((background.sld crowd.sld sfx.sld voicechat.sld)
+            {helpbar
+               set_config
+               ((cancel helpbar_cancel)
+                  (confirm helpbar_confirmsetting))})})}
+{new
+   UIScreen
+   options_milo_screen
+   (panels meta background_panel main_popup_bg_panel options_milo_panel)
+   (focus options_milo_panel)
+   (back overshell_main_screen)
+   (helpbar
+      (helpbar_back helpbar_select))}
